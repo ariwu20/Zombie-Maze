@@ -7,6 +7,11 @@ let a;
 let w = 100;
 let z = 100;
 
+let testRight;
+let testLeft;
+let testDown;
+let testUp;
+
 
 function setup() {
   a = new sprite (x,y);
@@ -21,8 +26,10 @@ createCanvas(canvasX, canvasY);
  //function keyPressed();
  a.drawSprite();
  a.moveSprite();
+ a.detectWall();
  a.canvasSprite();
  a.canvasSpriteY();
+
 
   //white background rectangle
   noStroke();
@@ -31,12 +38,15 @@ createCanvas(canvasX, canvasY);
   //text showing mouse coordinates
   fill(255, 0, 0);
   text("("+mouseX + ", " + mouseY+")", 5, 15);
+
+
+
 }
 
 class sprite {
 
   constructor(x,y){
-		this.x = x;
+		    this.x = x;
     		this.y = y;
         // this.canvasx = canvasX;
         // this.canvasy = canvasY;
@@ -46,23 +56,34 @@ class sprite {
         strokeWeight(2);
         fill("blue");
     		rect(this.x,this.y,20,20);
+        print(this.x + this.y);
 	}
 
 	//update the location of the ball, so it moves across the screen
 	moveSprite(){
-		 if(keyIsDown(RIGHT_ARROW)){
-       this.x = this.x + 10;
+    if(keyIsDown(RIGHT_ARROW)&& testRight[1]>=200){
+      this.x = this.x + 5;
+
      }
-     else if (keyIsDown(LEFT_ARROW)){
-       this.x = this.x - 10;
+     else if (keyIsDown(LEFT_ARROW) && testLeft[1]>=200){
+       this.x = this.x - 5;
      }
-     else if (keyIsDown(DOWN_ARROW)){
-       this.y = this.y + 10;
+     else if (keyIsDown(DOWN_ARROW)&& testDown[1]>=200){
+       this.y = this.y + 5;
      }
-     else if (keyIsDown(UP_ARROW)){
-       this.y = this.y - 10;
+     else if (keyIsDown(UP_ARROW)&& testUp[1]>=200){
+       this.y = this.y - 5;
     }
    }
+
+   detectWall(){
+
+      testRight = get(this.x+22,this.y);
+      testLeft = get(this.x-2, this.y);
+      testDown = get(this.x, this.y+22);
+      testUp = get(this.x, this.y-2);
+    }
+
    canvasSprite(){
      if(this.x+50>=canvasX){
        canvasX = canvasX + 30;
@@ -71,12 +92,6 @@ class sprite {
    canvasSpriteY(){
      if(this.y+50>=canvasY){
        canvasY = canvasY + 30;
-     }
-   }
-   //figuring out how to make the wall an obstacle
-   wallSprite(){
-     if(this.x>=300 && this.x<=313 && this.y>=300 && this.y<=21){
-
      }
    }
 }
