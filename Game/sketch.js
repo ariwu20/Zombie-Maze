@@ -1,7 +1,7 @@
 let x = 50;
 let y = 40;
-let canvasX = 500;
-let canvasY = 500;
+let canvasX = 400;
+let canvasY = 250;
 let sprites=[];
 let a;
 let w = 100;
@@ -30,7 +30,6 @@ createCanvas(canvasX, canvasY);
  a.canvasSprite();
  a.canvasSpriteY();
 
-
   //white background rectangle
   noStroke();
   fill(255);
@@ -38,9 +37,6 @@ createCanvas(canvasX, canvasY);
   //text showing mouse coordinates
   fill(255, 0, 0);
   text("("+mouseX + ", " + mouseY+")", 5, 15);
-
-
-
 }
 
 class sprite {
@@ -123,25 +119,25 @@ function city(w,z){//w= 100, z= 100
   line(w,z+350,w,z+290);
   line(w+170,z+450,w,z+450);
 //part B
-  line(500,200,500,450);
-  line(500,450,800,450);
-  line(800,450,800,1000);
-  line(300,300,400,300);
-  line(400,300,400,550);
-  line(400,550,700,550);
-  line(700,550,700,750);
+  line(w+400,z+100,w+400,z+350);
+  line(w+400,z+350,w+700,z+350);
+  line(w+700,z+350,w+700,z+900);
+  line(w+200,z+200,w+300,z+200);
+  line(w+300,z+200,w+300,z+450);
+  line(w+300,z+450,w+600,z+450);
+  line(w+600,z+450,w+600,z+650);
   //part A
-  line(0,650,450,650);
-  line(400,650,400,800);
-  line(700,750,600,750);
-  line(600,750,600,1000);
-  line(700,860,700,1000);
-  line(1000,700,900,700);
-  line(800,800,900,800);
-  line(1000,1000,800,1000);
-  line(0,1000,600,1000);
-  line(500,800,500,1000);
-  line(300,800,300,1000);
-  line(300,800,100,800);
+  line(w-100,z+550,w+350,z+550);
+  line(w+300,z+550,w+300,z+700);
+  line(w+600,z+650,w+500,z+650);
+  line(w+500,z+650,w+500,z+900);
+  line(w+600,z+760,w+600,z+900);
+  line(w+900,z+600,w+800,z+600);
+  line(w+700,z+700,w+800,z+700);
+  line(w+900,z+900,w+700,z+900);
+  line(w-100,z+900,w+500,z+900);
+  line(w+400,z+700,w+400,z+900);
+  line(w+200,z+700,w+200,z+900);
+  line(w+200,z+700,w,z+700);
 
 }
