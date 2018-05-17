@@ -1,9 +1,9 @@
-let x = 50;
 let w = 100;
 let z = 100;
 var timer;
 var counter = 300;
-var seconds, minutes;
+var seconds=0;
+var minutes=0;
 let x = 50;
 let y = 40;
 let canvasX = 400;
@@ -20,7 +20,7 @@ let time;
 function setup() {
   a = new sprite (x,y);
   fill('white');
-  timer = createP('timer');
+
     setInterval(timeIt, 1000);
 }
 
@@ -76,19 +76,15 @@ class sprite {
 	moveSprite(){
     if(keyIsDown(RIGHT_ARROW)&& testRight[1]>=200){
       this.x = this.x + 5;
-      steps = steps - 1;
      }
      else if (keyIsDown(LEFT_ARROW) && testLeft[1]>=200){
        this.x = this.x - 5;
-       steps = steps - 1;
      }
      else if (keyIsDown(DOWN_ARROW)&& testDown[1]>=200){
        this.y = this.y + 5;
-       steps = steps - 1;
      }
      else if (keyIsDown(UP_ARROW)&& testUp[1]>=200){
        this.y = this.y - 5;
-       steps = steps - 1;
     }
    }
 
