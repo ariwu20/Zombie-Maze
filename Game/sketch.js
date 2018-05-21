@@ -20,7 +20,7 @@ let time;
 function setup() {
   a = new sprite (x,y);
   fill('white');
-
+img = loadImage("assets/puppy.jpg");
     setInterval(timeIt, 1000);
 }
 
@@ -36,8 +36,7 @@ createCanvas(canvasX, canvasY);
  a.detectWall();
  a.canvasSprite();
  a.canvasSpriteY();
- fill("white");
-  text(minutes + ":" + seconds, 100,100);
+ a.imageSprite();
 }
 
 function timeIt() {
@@ -52,7 +51,6 @@ function timeIt() {
   // if (counter < 60)
   //timer = text(minutes + ':' + seconds,100,200);
    timer.html(minutes + ":" + seconds);
-   fill(255);
 
 }
 
@@ -70,6 +68,8 @@ class sprite {
         fill("blue");
     		rect(this.x,this.y,20,20);
       //  print(this.x + this.y);
+      fill(255);
+       text(minutes + ":" + seconds, this.x,this.y+10);
 	}
 
 	//update the location of the ball, so it moves across the screen
@@ -104,6 +104,12 @@ class sprite {
    canvasSpriteY(){
      if(this.y+50>=canvasY){
        canvasY = canvasY + 30;
+     }
+   }
+
+   imageSprite(){
+     if(500<=this.x && this.x<=600){
+       image(img, 50, 50);
      }
    }
 }
