@@ -21,29 +21,51 @@ function setup() {
   a = new sprite (x,y);
   fill('white');
 img = loadImage("assets/puppy.jpg");
+img2 = loadImage("assets/cat.jpg");
+img3 = loadImage("assets/bunny.jpg");
     setInterval(timeIt, 1000);
 }
 
 function draw() {
 createCanvas(canvasX, canvasY);
  background(200);
+ //white background rectangle
+ noStroke();
+ fill(255);
+ rect(0, 0, 48, 497);
+ //text showing mouse coordinates
+ fill(255, 0, 0);
+ text("("+mouseX + ", " + mouseY+")", 50, 500);
  city(w,z);
+
  strokeWeight(4);
- // print(x);
  //function keyPressed();
  a.drawSprite();
  a.moveSprite();
  a.detectWall();
  a.canvasSprite();
  a.canvasSpriteY();
- a.imageSprite();
+ //a.imageSprite();
+ imageLoad();
 }
 
+function imageLoad(){
+  if (counter<290 && counter>285){
+    image(img, 50, 50);
+  }
+  else if (counter<280 && counter>275){
+    image(img2,50,50);
+  }
+  else if (counter<270 && counter>265){
+    image(img3, 50, 50);
+  }
+}
 function timeIt() {
   // 1 counter = 1 second
   if (counter > 0) {
     counter--;
   }
+
 
 	minutes = floor(counter/60);
   seconds = counter % 60;
@@ -107,9 +129,10 @@ class sprite {
      }
    }
 
-   imageSprite(){
-     if(500<=this.x && this.x<=600){
-       image(img, 50, 50);
+   endGameSprite(){
+     if(415<=this.x && this.x<=380 && this.y<=900 && this.y>=860){
+       fill("red");
+       text("GAME OVER",width/2, height*0.7);
      }
    }
 }
