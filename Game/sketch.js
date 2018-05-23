@@ -29,17 +29,8 @@ img3 = loadImage("assets/bunny.jpg");
 function draw() {
 createCanvas(canvasX, canvasY);
  background(200);
- // //white background rectangle
- // noStroke();
- // fill(255);
- // rect(0, 0, 48, 497);
- // //text showing mouse coordinates
- // fill(255, 0, 0);
- // text("("+mouseX + ", " + mouseY+")", 50, 500);
  city(w,z);
-
  strokeWeight(4);
- //function keyPressed();
  a.drawSprite();
  a.moveSprite();
  a.detectWall();
@@ -67,6 +58,7 @@ function imageLoad(){
     text("YOU DIED", width/8, height*0.7);
   }
 }
+
 function timeIt() {
   // 1 counter = 1 second
   if (counter > 0) {
@@ -88,20 +80,16 @@ class sprite {
   constructor(x,y){
 		    this.x = x;
     		this.y = y;
-        // this.canvasx = canvasX;
-        // this.canvasy = canvasY;
       }
 
   drawSprite(){
         strokeWeight(2);
         fill("blue");
     		rect(this.x,this.y,20,20);
-      //  print(this.x + this.y);
-      fill(255);
-       text(minutes + ":" + seconds, this.x,this.y+10);
+        fill(255);
+        text(minutes + ":" + seconds, this.x,this.y+10);
 	}
 
-	//update the location of the ball, so it moves across the screen
 	moveSprite(){
     if(keyIsDown(RIGHT_ARROW)&& testRight[1]>=200){
       this.x = this.x + 5;
@@ -115,10 +103,9 @@ class sprite {
      else if (keyIsDown(UP_ARROW)&& testUp[1]>=200){
        this.y = this.y - 5;
     }
-   }
+  }
 
    detectWall(){
-
       testRight = get(this.x+22,this.y);
       testLeft = get(this.x-2, this.y);
       testDown = get(this.x, this.y+22);
@@ -130,6 +117,7 @@ class sprite {
        canvasX = canvasX + 30;
      }
    }
+
    canvasSpriteY(){
      if(this.y+50>=canvasY){
        canvasY = canvasY + 30;
@@ -147,7 +135,7 @@ class sprite {
    }
 }
 
-function city(w,z){//w= 100, z= 100
+function city(w,z){
   strokeWeight(30);
   stroke('black')
   //top
