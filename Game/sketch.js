@@ -1,7 +1,7 @@
 let w = 100;
 let z = 100;
 var timer;
-var counter = 300;
+var counter = 150;
 var seconds=0;
 var minutes=0;
 let x = 50;
@@ -58,6 +58,13 @@ function imageLoad(){
   }
   else if (counter<270 && counter>265){
     image(img3, 50, 50);
+  }
+  else if (counter<=0){
+    canvasX = canvasX + 500;
+    background("black");
+    fill("red");
+    textSize(100);
+    text("YOU DIED", width/8, height*0.7);
   }
 }
 function timeIt() {
