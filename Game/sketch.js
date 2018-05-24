@@ -20,7 +20,7 @@ let time;
 function setup() {
   a = new sprite (x,y);
   fill('white');
-img = loadImage("assets/puppy.jpg");
+img = loadImage("assets/Guy-2.png");
 img2 = loadImage("assets/cat.jpg");
 img3 = loadImage("assets/bunny.jpg");
     setInterval(timeIt, 1000);
@@ -41,7 +41,7 @@ createCanvas(canvasX, canvasY);
 }
 
 function imageLoad(){
-  if (counter<125 && counter>117){
+  if (counter<140 && counter>117){
     image(img, 50, 50);
   }
   else if (counter<97 && counter>90){
