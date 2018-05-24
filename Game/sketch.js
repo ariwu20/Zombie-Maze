@@ -41,13 +41,13 @@ createCanvas(canvasX, canvasY);
 }
 
 function imageLoad(){
-  if (counter<290 && counter>285){
+  if (counter<125 && counter>117){
     image(img, 50, 50);
   }
-  else if (counter<280 && counter>275){
+  else if (counter<97 && counter>90){
     image(img2,50,50);
   }
-  else if (counter<270 && counter>265){
+  else if (counter<50 && counter>44){
     image(img3, 50, 50);
   }
   else if (counter<=0){
