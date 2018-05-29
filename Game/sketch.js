@@ -1,7 +1,7 @@
 let w = 100;
 let z = 100;
 var timer;
-var counter = 300;
+var counter = 150;
 var seconds=0;
 var minutes=0;
 let x = 50;
@@ -20,7 +20,11 @@ let time;
 function setup() {
   a = new sprite (x,y);
   fill('white');
+<<<<<<< HEAD
 img = loadImage("assets/guy.png");
+=======
+img = loadImage("assets/Guy-2.png");
+>>>>>>> 3a25de1696d5f6c93e6121dfbc69ecdd041ed65c
 img2 = loadImage("assets/cat.jpg");
 img3 = loadImage("assets/bunny.jpg");
     setInterval(timeIt, 1000);
@@ -30,9 +34,7 @@ function draw() {
 createCanvas(canvasX, canvasY);
  background(200);
  city(w,z);
-
  strokeWeight(4);
- //function keyPressed();
  a.drawSprite();
  a.moveSprite();
  a.detectWall();
@@ -43,6 +45,7 @@ createCanvas(canvasX, canvasY);
 }
 
 function imageLoad(){
+<<<<<<< HEAD
   if (counter<290 && counter>285){
     image(img, 0, 0,canvasX,canvasY);
   }
@@ -51,6 +54,16 @@ function imageLoad(){
   }
   else if (counter<270 && counter>265){
     image(img3, 0, 0,canvasX,canvasY);
+=======
+  if (counter<140 && counter>117){
+    image(img, 50, 50);
+  }
+  else if (counter<97 && counter>90){
+    image(img2,50,50);
+  }
+  else if (counter<50 && counter>44){
+    image(img3, 50, 50);
+>>>>>>> 3a25de1696d5f6c93e6121dfbc69ecdd041ed65c
   }
   else if (counter<=0){
     canvasX = canvasX + 500;
@@ -58,8 +71,13 @@ function imageLoad(){
     fill("red");
     textSize(100);
     text("YOU DIED", width/8, height*0.7);
+<<<<<<< HEAD
 }
+=======
+  }
+>>>>>>> 3a25de1696d5f6c93e6121dfbc69ecdd041ed65c
 }
+
 function timeIt() {
   // 1 counter = 1 second
   if (counter > 0) {
@@ -81,20 +99,16 @@ class sprite {
   constructor(x,y){
 		    this.x = x;
     		this.y = y;
-        // this.canvasx = canvasX;
-        // this.canvasy = canvasY;
       }
 
   drawSprite(){
         strokeWeight(2);
         fill("blue");
     		rect(this.x,this.y,20,20);
-      //  print(this.x + this.y);
-      fill(255);
-       text(minutes + ":" + seconds, this.x,this.y+10);
+        fill(255);
+        text(minutes + ":" + seconds, this.x,this.y+10);
 	}
 
-	//update the location of the ball, so it moves across the screen
 	moveSprite(){
     if(keyIsDown(RIGHT_ARROW)&& testRight[1]>=200){
       this.x = this.x + 5;
@@ -108,10 +122,9 @@ class sprite {
      else if (keyIsDown(UP_ARROW)&& testUp[1]>=200){
        this.y = this.y - 5;
     }
-   }
+  }
 
    detectWall(){
-
       testRight = get(this.x+22,this.y);
       testLeft = get(this.x-2, this.y);
       testDown = get(this.x, this.y+22);
@@ -123,6 +136,7 @@ class sprite {
        canvasX = canvasX + 30;
      }
    }
+
    canvasSpriteY(){
      if(this.y+50>=canvasY){
        canvasY = canvasY + 30;
@@ -133,6 +147,7 @@ class sprite {
      if(615<=this.x && this.x<=780 && this.y<=1000 && this.y>=940){
        canvasX = canvasX + 500;
        background("black");
+<<<<<<< HEAD
        fill("red");
        textSize(100);
        text("YOU ESCAPED", width/8, height*0.7);
@@ -145,11 +160,16 @@ class sprite {
        fill("red");
        textSize(100);
        text("YOU LOST", width/8, height*0.7);
+=======
+       fill("red");
+       textSize(100);
+       text("YOU ESCAPED", width/8, height*0.7);
+>>>>>>> 3a25de1696d5f6c93e6121dfbc69ecdd041ed65c
      }
    }
 }
 
-function city(w,z){//w= 100, z= 100
+function city(w,z){
   strokeWeight(30);
   stroke('black')
   //top
