@@ -1,13 +1,13 @@
 let w = 100;
 let z = 100;
 var timer;
-var counter = 300;
+var counter = 177;
 var seconds=0;
 var minutes=0;
 let x = 50;
 let y = 40;
-let canvasX = 400;
-let canvasY = 250;
+let canvasX = 450;
+let canvasY = 300;
 let sprites=[];
 let a;
 
@@ -20,9 +20,9 @@ let time;
 function setup() {
   a = new sprite (x,y);
   fill('white');
-img = loadImage("assets/guy.png");
-img2 = loadImage("assets/cat.jpg");
-img3 = loadImage("assets/bunny.jpg");
+img = loadImage("assets/start.png");
+img2 = loadImage("assets/car2.png");
+img3 = loadImage("assets/zombie-car.png");
     setInterval(timeIt, 1000);
 }
 
@@ -43,14 +43,15 @@ createCanvas(canvasX, canvasY);
 }
 
 function imageLoad(){
-  if (counter<290 && counter>285){
+  if (counter<177 && counter>150){
     image(img, 0, 0,canvasX,canvasY);
   }
-  else if (counter<280 && counter>275){
-    image(img2,0, 0,canvasX,canvasY);
+  else if (counter<100&&counter>95){
+    image(img2,0,0,canvasX,canvasY);
+    counter=counter-30
   }
-  else if (counter<270 && counter>265){
-    image(img3, 0, 0,canvasX,canvasY);
+  else if (counter<3 && counter>0){
+    image(img2,0, 0,canvasX,canvasY);
   }
   else if (counter<=0){
     canvasX = canvasX + 500;
@@ -59,7 +60,6 @@ function imageLoad(){
     textSize(100);
     text("YOU DIED", width/8, height*0.7);
 }
-
 }
 
 function timeIt() {
@@ -68,12 +68,10 @@ function timeIt() {
     counter--;
   }
 
-
-  minutes = floor(counter/60);
+	minutes = floor(counter/60);
   seconds = counter % 60;
 
-  // if (counter < 60)
-  //timer = text(minutes + ':' + seconds,100,200);
+
    timer.html(minutes + ":" + seconds);
 
 }
@@ -132,21 +130,12 @@ class sprite {
    }
 
    endGameSprite(){
-     if(615<=this.x && this.x<=780 && this.y<=1000 && this.y>=940){
+     if(615<=this.x && this.x<=780 && this.y<=1000 && this.y>=950){
        canvasX = canvasX + 500;
        background("black");
        fill("red");
        textSize(100);
        text("YOU ESCAPED", width/8, height*0.7);
-     }
-   }
-   loseGameSprite(){
-     if(counter==0 && 615>=this.x && this.x>=780 && this.y>=1000 && this.y>=940){
-       canvasX = canvasX + 500;
-       background("black");
-       fill("red");
-       textSize(100);
-       text("YOU LOST", width/8, height*0.7);
      }
    }
 }
