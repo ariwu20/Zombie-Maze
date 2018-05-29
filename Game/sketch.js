@@ -20,7 +20,7 @@ let time;
 function setup() {
   a = new sprite (x,y);
   fill('white');
-img = loadImage("assets/puppy.jpg");
+img = loadImage("assets/guy.png");
 img2 = loadImage("assets/cat.jpg");
 img3 = loadImage("assets/bunny.jpg");
     setInterval(timeIt, 1000);
@@ -29,13 +29,6 @@ img3 = loadImage("assets/bunny.jpg");
 function draw() {
 createCanvas(canvasX, canvasY);
  background(200);
- //white background rectangle
- noStroke();
- fill(255);
- rect(0, 0, 48, 497);
- //text showing mouse coordinates
- fill(255, 0, 0);
- text("("+mouseX + ", " + mouseY+")", 50, 500);
  city(w,z);
 
  strokeWeight(4);
@@ -45,20 +38,27 @@ createCanvas(canvasX, canvasY);
  a.detectWall();
  a.canvasSprite();
  a.canvasSpriteY();
- //a.imageSprite();
+ a.endGameSprite();
  imageLoad();
 }
 
 function imageLoad(){
   if (counter<290 && counter>285){
-    image(img, 50, 50);
+    image(img, 0, 0,canvasX,canvasY);
   }
   else if (counter<280 && counter>275){
-    image(img2,50,50);
+    image(img2,0, 0,canvasX,canvasY);
   }
   else if (counter<270 && counter>265){
-    image(img3, 50, 50);
+    image(img3, 0, 0,canvasX,canvasY);
   }
+  else if (counter<=0){
+    canvasX = canvasX + 500;
+    background("black");
+    fill("red");
+    textSize(100);
+    text("YOU DIED", width/8, height*0.7);
+}
 }
 function timeIt() {
   // 1 counter = 1 second
@@ -130,9 +130,21 @@ class sprite {
    }
 
    endGameSprite(){
-     if(415<=this.x && this.x<=380 && this.y<=900 && this.y>=860){
+     if(615<=this.x && this.x<=780 && this.y<=1000 && this.y>=940){
+       canvasX = canvasX + 500;
+       background("black");
        fill("red");
-       text("GAME OVER",width/2, height*0.7);
+       textSize(100);
+       text("YOU ESCAPED", width/8, height*0.7);
+     }
+   }
+   loseGameSprite(){
+     if(counter==0 && 615>=this.x && this.x>=780 && this.y>=1000 && this.y>=940){
+       canvasX = canvasX + 500;
+       background("black");
+       fill("red");
+       textSize(100);
+       text("YOU LOST", width/8, height*0.7);
      }
    }
 }
