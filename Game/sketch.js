@@ -69,7 +69,7 @@ function timeIt() {
   }
 
 
-	minutes = floor(counter/60);
+  minutes = floor(counter/60);
   seconds = counter % 60;
 
   // if (counter < 60)
