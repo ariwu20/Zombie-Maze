@@ -104,7 +104,7 @@ function timeIt() {//timer
     counter--;
   }
 
-	minutes = floor(counter/60);
+  minutes = floor(counter/60);
   seconds = counter % 60;
 
   timer.html(minutes + ":" + seconds);
@@ -114,16 +114,16 @@ function timeIt() {//timer
 class sprite {
 
   constructor(x,y){
-		    this.x = x;
-    		this.y = y;
+	this.x = x;
+    	this.y = y;
       }
 
   drawSprite(){//car
-        strokeWeight(2);
-        fill("blue");
-    		rect(this.x,this.y,20,20);
-        fill(255);
-        text(minutes + ":" + seconds, this.x,this.y+10);
+     strokeWeight(2);
+     fill("blue");
+     rect(this.x,this.y,20,20);
+     fill(255);
+     text(minutes + ":" + seconds, this.x,this.y+10);
 	}
 
 	moveSprite(){
@@ -169,6 +169,7 @@ class sprite {
      }
    }
 }
+
 
 function city(w,z){//w= 100, z= 100
   strokeWeight(30);
