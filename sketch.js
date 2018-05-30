@@ -1,7 +1,7 @@
 let w = 100;
 let z = 100;
 var timer;
-var counter = 105;
+var counter = 165;
 var seconds=0;
 var minutes=0;
 let x = 50;
@@ -12,6 +12,7 @@ let sprites=[];
 let a;
 var lessTime=false;
 var extraTime=false;
+var extra=0;//extra variable to help the extraTime work
 
 let testRight;
 let testLeft;
@@ -27,7 +28,7 @@ img2 = loadImage("assets/car2.png");
 img3 = loadImage("assets/guy.png");
 img4 = loadImage("assets/zombie-car.png");
 img5 = loadImage("assets/tomb.png");
-    setInterval(timeIt, 1000);
+  setInterval(timeIt, 1000);
 }
 
 function draw() {
@@ -48,7 +49,7 @@ createCanvas(canvasX, canvasY);
  print(counter);
 }
 
-function imageLoad(){
+function imageLoad(){//when the images appear according to counter
   if (lessTime == true){
     image(img2,0,0,canvasX,canvasY);
   }
@@ -59,27 +60,14 @@ function imageLoad(){
   if(extraTime==true){
     background('white');
     image(img3,0,0,canvasX,canvasY);
+    print("extra time");
   }
   else{
     print ("extra time shouldn't be true");
   }
 
-  if (counter<177 && counter>150){
+  if (counter<165 && counter>150){
       image(img, 0, 0,canvasX,canvasY);
-  }
-  else if (counter<100&&counter>95){
-      counter=counter-30;
-      lessTime=true;
-  }
-  else if (counter<=65){
-    lessTime=false;
-  }
-  else if (counter<50&&counter>45){
-      counter=counter+30;
-      extraTime=true;
-  }
-  else if(counter<=75){
-    extraTime=false;
   }
   else if (counter<3 && counter>0){
       image(img4,0, 0,canvasX,canvasY);
@@ -91,12 +79,26 @@ function imageLoad(){
       textSize(100);
       text("YOU DIED", width/8, height*0.7);
 }
-  else{
-    print("dont do anything with counter");
+  else if (counter<=60&&extra==0){
+      counter=counter+30;
+      extraTime=true;
+      extra=extra+1
   }
+  else if(counter<=85){
+    extraTime=false;
+  }
+
+  else if (counter<140&&counter>135){
+      counter=counter-30;
+      lessTime=true;
+  }
+  else if (counter<=105){
+    lessTime=false;
+  }
+
 }
 
-function timeIt() {
+function timeIt() {//timer
   // 1 counter = 1 second
   if (counter > 0) {
     counter--;
@@ -105,8 +107,7 @@ function timeIt() {
 	minutes = floor(counter/60);
   seconds = counter % 60;
 
-
-   timer.html(minutes + ":" + seconds);
+  timer.html(minutes + ":" + seconds);
 
 }
 
@@ -115,41 +116,37 @@ class sprite {
   constructor(x,y){
 		    this.x = x;
     		this.y = y;
-        // this.canvasx = canvasX;
-        // this.canvasy = canvasY;
       }
 
-  drawSprite(){
+  drawSprite(){//car
         strokeWeight(2);
         fill("blue");
     		rect(this.x,this.y,20,20);
-      //  print(this.x + this.y);
-      fill(255);
-       text(minutes + ":" + seconds, this.x,this.y+10);
+        fill(255);
+        text(minutes + ":" + seconds, this.x,this.y+10);
 	}
 
-	//update the location of the ball, so it moves across the screen
 	moveSprite(){
     if(keyIsDown(RIGHT_ARROW)&& testRight[1]>=200){
       this.x = this.x + 5;
      }
-     else if (keyIsDown(LEFT_ARROW) && testLeft[1]>=200){
+    else if (keyIsDown(LEFT_ARROW) && testLeft[1]>=200){
        this.x = this.x - 5;
      }
-     else if (keyIsDown(DOWN_ARROW)&& testDown[1]>=200){
+    else if (keyIsDown(DOWN_ARROW)&& testDown[1]>=200){
        this.y = this.y + 5;
      }
-     else if (keyIsDown(UP_ARROW)&& testUp[1]>=200){
+    else if (keyIsDown(UP_ARROW)&& testUp[1]>=200){
        this.y = this.y - 5;
     }
    }
 
    detectWall(){
 
-      testRight = get(this.x+22,this.y);
-      testLeft = get(this.x-2, this.y);
-      testDown = get(this.x, this.y+22);
-      testUp = get(this.x, this.y-2);
+     testRight = get(this.x+22,this.y);
+     testLeft = get(this.x-2, this.y);
+     testDown = get(this.x, this.y+22);
+     testUp = get(this.x, this.y-2);
     }
 
    canvasSprite(){
@@ -163,13 +160,12 @@ class sprite {
      }
    }
 
-   endGameSprite(){
+   endGameSprite(){//win screen
      if(615<=this.x && this.x<=780 && this.y<=1000 && this.y>=950){
-       canvasX = canvasX + 500;
        background("black");
        fill("red");
        textSize(100);
-       text("YOU ESCAPED", width/8, height*0.7);
+       text("YOU ESCAPED!", width/8, height*0.7);
      }
    }
 }
