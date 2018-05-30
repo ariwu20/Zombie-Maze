@@ -1,7 +1,7 @@
 let w = 100;
 let z = 100;
 var timer;
-var counter = 145;
+var counter = 5;
 var seconds=0;
 var minutes=0;
 let x = 50;
