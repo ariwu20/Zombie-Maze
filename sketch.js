@@ -1,7 +1,7 @@
 let w = 100;
 let z = 100;
 var timer;
-var counter = 5;
+var counter =165;
 var seconds=0;
 var minutes=0;
 let x = 50;
@@ -80,7 +80,7 @@ function imageLoad(){//when the images appear according to counter
       image(img5,0,0,canvasX,canvasY)
       fill("red");
       textSize(100);
-      text("YOU DIED", canvasX/8, canvasY/3);
+      text("YOU DIED", width/8, height*0.7);
 }
   else if (counter<=60&&extra==0){
       counter=counter+30;
