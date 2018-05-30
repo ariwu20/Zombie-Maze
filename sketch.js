@@ -52,11 +52,6 @@ createCanvas(canvasX, canvasY);
 function imageLoad(){//when the images appear according to counter
   if (lessTime == true){
     image(img2,0,0,canvasX,canvasY);
-    fill('black');
-    rect(canvasX/2.5,canvasY/2.5,210,140);
-    fill("white");
-    textSize(20);
-    text("Bombing has been moved up by 30 seconds, HURRY!", canvasX/2.3, canvasY/2,200,200);
   }
   else{
     print ("no image should be here");
