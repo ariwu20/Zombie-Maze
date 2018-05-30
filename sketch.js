@@ -52,9 +52,11 @@ createCanvas(canvasX, canvasY);
 function imageLoad(){//when the images appear according to counter
   if (lessTime == true){
     image(img2,0,0,canvasX,canvasY);
+    fill('black');
+    rect(canvasX/2.5,canvasY/2.5,210,140);
     fill("white");
-    textSize(30);
-    text("Bombing has been moved up by 30 seconds, HURRY!", canvasX/3, canvasY/2,200,200);
+    textSize(20);
+    text("Bombing has been moved up by 30 seconds, HURRY!", canvasX/2.3, canvasY/2,200,200);
   }
   else{
     print ("no image should be here");
@@ -222,4 +224,3 @@ function city(w,z){//w= 100, z= 100
   line(w+200,z+700,w,z+700);
 
 }
-
