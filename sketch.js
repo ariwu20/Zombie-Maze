@@ -1,7 +1,7 @@
 let w = 100;
 let z = 100;
 var timer;
-var counter = 165;
+var counter = 145;
 var seconds=0;
 var minutes=0;
 let x = 50;
@@ -52,6 +52,9 @@ createCanvas(canvasX, canvasY);
 function imageLoad(){//when the images appear according to counter
   if (lessTime == true){
     image(img2,0,0,canvasX,canvasY);
+    fill("white");
+    textSize(30);
+    text("Bombing has been moved up by 30 seconds, HURRY!", canvasX/3, canvasY/2,200,200);
   }
   else{
     print ("no image should be here");
@@ -77,7 +80,7 @@ function imageLoad(){//when the images appear according to counter
       image(img5,0,0,canvasX,canvasY)
       fill("red");
       textSize(100);
-      text("YOU DIED", width/8, height*0.7);
+      text("YOU DIED", canvasX/8, canvasY/3);
 }
   else if (counter<=60&&extra==0){
       counter=counter+30;
@@ -219,3 +222,4 @@ function city(w,z){//w= 100, z= 100
   line(w+200,z+700,w,z+700);
 
 }
+
