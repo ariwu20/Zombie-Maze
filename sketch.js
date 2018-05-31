@@ -67,7 +67,7 @@ function imageLoad(){//when the images appear according to counter
     print ("extra time shouldn't be true");
   }
 
-  if (counter<165 && counter>150){
+  if (counter<=165 && counter>150){
       image(img, 0, 0,canvasX,canvasY);
   }
   else if (counter<3 && counter>0 && win==0){
