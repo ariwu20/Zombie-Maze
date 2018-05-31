@@ -70,7 +70,7 @@ function imageLoad(){//when the images appear according to counter
   if (counter<=165 && counter>150){
       image(img, 0, 0,canvasX,canvasY);
   }
-  else if (counter<5 && counter>0 && win==0){
+  else if (counter<4 && counter>0 && win==0){
       image(img4,0, 0,canvasX,canvasY);
   }
   else if (counter<=0 && win==0){
