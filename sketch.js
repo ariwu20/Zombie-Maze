@@ -13,6 +13,7 @@ let a;
 var lessTime=false;
 var extraTime=false;
 var extra=0;//extra variable to help the extraTime work
+var win=0;
 
 let testRight;
 let testLeft;
@@ -24,7 +25,7 @@ function setup() {
   a = new sprite (x,y);
   fill('white');
 img = loadImage("assets/start.png");
-img2 = loadImage("assets/car2.png");
+img2 = loadImage("assets/car.png");
 img3 = loadImage("assets/guy.png");
 img4 = loadImage("assets/zombie-car.png");
 img5 = loadImage("assets/tomb.png");
@@ -69,17 +70,17 @@ function imageLoad(){//when the images appear according to counter
   if (counter<165 && counter>150){
       image(img, 0, 0,canvasX,canvasY);
   }
-  else if (counter<3 && counter>0){
+  else if (counter<3 && counter>0 && win==0){
       image(img4,0, 0,canvasX,canvasY);
   }
-  else if (counter<=0){
+  else if (counter<=0 && win==0){
       background("black");
       image(img5,0,0,canvasX,canvasY)
       fill("red");
       textSize(100);
       text("YOU DIED", width/8, height*0.7);
 }
-  else if (counter<=60&&extra==0){
+  else if (counter<=60 && extra==0){
       counter=counter+30;
       extraTime=true;
       extra=extra+1
@@ -104,7 +105,7 @@ function timeIt() {//timer
     counter--;
   }
 
-  minutes = floor(counter/60);
+	minutes = floor(counter/60);
   seconds = counter % 60;
 
   timer.html(minutes + ":" + seconds);
@@ -114,16 +115,16 @@ function timeIt() {//timer
 class sprite {
 
   constructor(x,y){
-	this.x = x;
-    	this.y = y;
+		    this.x = x;
+    		this.y = y;
       }
 
   drawSprite(){//car
-     strokeWeight(2);
-     fill("blue");
-     rect(this.x,this.y,20,20);
-     fill(255);
-     text(minutes + ":" + seconds, this.x,this.y+10);
+        strokeWeight(2);
+        fill("blue");
+    		rect(this.x,this.y,20,20);
+        fill(255);
+        text(minutes + ":" + seconds, this.x,this.y+10);
 	}
 
 	moveSprite(){
@@ -166,10 +167,10 @@ class sprite {
        fill("red");
        textSize(100);
        text("YOU ESCAPED!", width/8, height*0.7);
+       win=win+1;
      }
    }
 }
-
 
 function city(w,z){//w= 100, z= 100
   strokeWeight(30);
@@ -218,5 +219,4 @@ function city(w,z){//w= 100, z= 100
   line(w+400,z+700,w+400,z+900);
   line(w+200,z+700,w+200,z+900);
   line(w+200,z+700,w,z+700);
-
 }
