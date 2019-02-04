@@ -1,7 +1,7 @@
 let w = 100;
 let z = 100;
 var timer;
-var counter = 165;
+var counter =165;
 var seconds=0;
 var minutes=0;
 let x = 50;
@@ -13,6 +13,7 @@ let a;
 var lessTime=false;
 var extraTime=false;
 var extra=0;//extra variable to help the extraTime work
+var win=0;
 
 let testRight;
 let testLeft;
@@ -23,10 +24,10 @@ let time;
 function setup() {
   a = new sprite (x,y);
   fill('white');
-img = loadImage("assets/start.png");
+img = loadImage("assets/start2.png");
 img2 = loadImage("assets/car2.png");
 img3 = loadImage("assets/guy.png");
-img4 = loadImage("assets/zombie-car.png");
+img4 = loadImage("assets/zombie-car2.png");
 img5 = loadImage("assets/tomb.png");
   setInterval(timeIt, 1000);
 }
@@ -66,20 +67,20 @@ function imageLoad(){//when the images appear according to counter
     print ("extra time shouldn't be true");
   }
 
-  if (counter<165 && counter>150){
+  if (counter<=165 && counter>155){
       image(img, 0, 0,canvasX,canvasY);
   }
-  else if (counter<3 && counter>0){
+  else if (counter<5 && counter>0 && win==0){
       image(img4,0, 0,canvasX,canvasY);
   }
-  else if (counter<=0){
+  else if (counter<=0 && win==0){
       background("black");
       image(img5,0,0,canvasX,canvasY)
       fill("red");
       textSize(100);
       text("YOU DIED", width/8, height*0.7);
 }
-  else if (counter<=60&&extra==0){
+  else if (counter<=60 && extra==0){
       counter=counter+30;
       extraTime=true;
       extra=extra+1
@@ -166,6 +167,7 @@ class sprite {
        fill("red");
        textSize(100);
        text("YOU ESCAPED!", width/8, height*0.7);
+       win=win+1;
      }
    }
 }
@@ -217,5 +219,4 @@ function city(w,z){//w= 100, z= 100
   line(w+400,z+700,w+400,z+900);
   line(w+200,z+700,w+200,z+900);
   line(w+200,z+700,w,z+700);
-
 }
